@@ -8,7 +8,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0; /* Remove any body padding */
-    overflow: hidden; /* Prevent scrolling */
+    overflow: hidden; /* Prevent unnecessary scrolling */
 }
 
 #byzantine-plugin {
@@ -20,13 +20,14 @@ body {
     border: none; /* Remove borders */
     border-radius: 0; /* Remove rounded corners */
     background: url('uxbackground.png') no-repeat center center;
-    background-size: cover; /* Ensure background scales to fit */
-    overflow: hidden;
+    background-size: contain; /* Ensure the entire background is always visible */
+    overflow: hidden; /* Prevent content overflow */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end; /* Start content from the bottom */
     align-items: center;
     gap: 2rem; /* Spacing between elements */
+    touch-action: manipulation; /* Enable touch interactions */
 }
 
 /* Note Buttons */
@@ -35,10 +36,11 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Responsive grid */
     gap: 1rem; /* Spacing between buttons */
     justify-content: center; /* Center buttons horizontally */
-    align-items: center; /* Center buttons vertically */
+    align-items: center; /* Center buttons vertically in container */
     width: 90%; /* Buttons area adapts to screen size */
     max-width: 400px; /* Limit maximum width */
-    padding: 2rem 0;
+    padding: 2rem 0; /* Add padding to move buttons down */
+    margin-bottom: 3rem; /* Place buttons lower on the screen */
 }
 
 .note-button {
@@ -94,7 +96,7 @@ input[type="range"]::-moz-range-thumb {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     #byzantine-plugin {
-        height: 100vh; /* Ensure full height on smaller screens */
+        height: auto; /* Allow resizing */
     }
 
     #note-buttons {
@@ -108,7 +110,7 @@ input[type="range"]::-moz-range-thumb {
 
 @media (max-width: 480px) {
     #byzantine-plugin {
-        height: 100vh;
+        height: auto; /* Allow resizing */
     }
 
     #current-frequency {
