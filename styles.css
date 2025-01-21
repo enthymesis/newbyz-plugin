@@ -7,37 +7,38 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    overflow: hidden; /* Prevent scrolling when plugin scales */
+    padding: 0; /* Remove any body padding */
+    overflow: hidden; /* Prevent scrolling */
 }
 
 #byzantine-plugin {
-    position: relative;
-    border: 0px solid #ccc;
-    width: 450px; /* Base width */
-    height: 800px; /* Base height */
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    background: url('uxbackground.png') no-repeat center;
-    background-size: contain; /* Ensure the entire background is visible */
+    position: absolute; /* Allow full-screen positioning */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    border: none; /* Remove borders */
+    border-radius: 0; /* Remove rounded corners */
+    background: url('uxbackground.png') no-repeat center center;
+    background-size: cover; /* Ensure background scales to fit */
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    gap: 2rem;
-    transform-origin: top left; /* Ensure proper scaling origin */
+    gap: 2rem; /* Spacing between elements */
 }
 
 /* Note Buttons */
 #note-buttons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-    gap: 1rem;
-    justify-content: center; /* Center buttons */
-    align-items: center; /* Center buttons vertically in container */
-    padding: 2rem;
-    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Responsive grid */
+    gap: 1rem; /* Spacing between buttons */
+    justify-content: center; /* Center buttons horizontally */
+    align-items: center; /* Center buttons vertically */
+    width: 90%; /* Buttons area adapts to screen size */
+    max-width: 400px; /* Limit maximum width */
+    padding: 2rem 0;
 }
 
 .note-button {
@@ -92,15 +93,8 @@ input[type="range"]::-moz-range-thumb {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start; /* Ensure plugin starts from top */
-    }
-
     #byzantine-plugin {
-        transform: scale(0.8); /* Scale down for smaller screens */
-        max-height: 100%; /* Ensure it fits within viewport height */
+        height: 100vh; /* Ensure full height on smaller screens */
     }
 
     #note-buttons {
@@ -114,8 +108,7 @@ input[type="range"]::-moz-range-thumb {
 
 @media (max-width: 480px) {
     #byzantine-plugin {
-        transform: scale(0.6); /* Further scale down for very small screens */
-        max-height: 100%;
+        height: 100vh;
     }
 
     #current-frequency {
