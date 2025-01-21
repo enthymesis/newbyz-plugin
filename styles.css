@@ -7,34 +7,35 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    overflow: hidden; /* Prevent scrolling when plugin scales */
 }
 
 #byzantine-plugin {
     position: relative;
     border: 0px solid #ccc;
-    width: 90%; /* Relative width for responsiveness */
-    max-width: 450px; /* Limit maximum width */
-    height: 80vh; /* Relative height */
-    max-height: 800px; /* Limit maximum height */
+    width: 450px; /* Base width */
+    height: 800px; /* Base height */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     background: url('uxbackground.png') no-repeat center;
-    background-size: cover; /* Ensure background adapts */
+    background-size: contain; /* Ensure the entire background is visible */
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    gap: 2rem; /* Use rem for spacing */
+    gap: 2rem;
+    transform-origin: top left; /* Ensure proper scaling origin */
 }
 
 /* Note Buttons */
 #note-buttons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Adapt grid to available space */
-    gap: 1rem; /* Use rem for spacing */
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 1rem;
+    justify-content: center; /* Center buttons */
+    align-items: center; /* Center buttons vertically in container */
     padding: 2rem;
     width: 100%;
 }
@@ -45,8 +46,8 @@ body {
     font-family: 'Verdana', sans-serif;
     border: none;
     border-radius: 5px;
-    padding: 0.75rem 1rem; /* Use rem for padding */
-    font-size: 1rem; /* Responsive font size */
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     text-align: center;
@@ -61,7 +62,7 @@ input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 0.375rem; /* Slim slider */
+    height: 0.375rem;
     margin: 0.5rem 0;
     background: white;
     outline: none;
@@ -85,37 +86,36 @@ input[type="range"]::-moz-range-thumb {
 #current-frequency {
     color: white;
     font-family: 'Verdana', sans-serif;
-    font-size: 1rem; /* Responsive font size */
+    font-size: 1rem;
     text-align: center;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-    #byzantine-plugin {
-        height: 90vh;
-        padding: 1rem;
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Ensure plugin starts from top */
     }
 
-    .note-button {
-        font-size: 0.875rem; /* Slightly smaller font on smaller screens */
+    #byzantine-plugin {
+        transform: scale(0.8); /* Scale down for smaller screens */
+        max-height: 100%; /* Ensure it fits within viewport height */
     }
 
     #note-buttons {
         gap: 0.5rem;
     }
 
-    input[type="range"] {
-        height: 0.25rem;
+    .note-button {
+        font-size: 0.875rem;
     }
 }
 
 @media (max-width: 480px) {
     #byzantine-plugin {
-        gap: 1rem;
-    }
-
-    .note-button {
-        padding: 0.5rem 0.75rem;
+        transform: scale(0.6); /* Further scale down for very small screens */
+        max-height: 100%;
     }
 
     #current-frequency {
