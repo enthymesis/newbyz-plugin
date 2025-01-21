@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byzantine Scale Plugin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="byzantine-plugin">
+        <div id="note-buttons">
+            <button class="note-button" data-note="ni">Νη</button>
+            <button class="note-button" data-note="pa">Πα</button>
+            <button class="note-button" data-note="vu">Βου</button>
+            <button class="note-button" data-note="ga">Γα</button>
+            <button class="note-button" data-note="di">Δι</button>
+            <button class="note-button" data-note="ke">Κε</button>
+            <button class="note-button" data-note="zo">Ζω</button>
+            <button class="note-button" data-note="ni">Νη᾽</button>
+        </div>
+        <input type="range" id="semitone-slider" min="-12" max="12" value="0" step="1" />
+        <p>Current Frequency: <span id="current-frequency">0</span> Hz</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+

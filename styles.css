@@ -1,0 +1,96 @@
+body {
+    font-family: 'Macondo', 'Trebuchet MS', sans-serif; /* Use Macondo font */
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#byzantine-plugin {
+    position: relative;
+    border: 0px solid #ccc;
+    width: 450px; /* Plugin width */
+    height: 800px; /* Plugin height */
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background: url('uxbackground.png') no-repeat center; /* Center background image */
+    background-size: 100%; /* Scale down background image to 100% */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center elements vertically */
+    align-items: center; /* Center elements horizontally */
+    padding: 10px; /* General padding */
+    gap: 20px; /* Spacing between elements */
+}
+
+/* Note Buttons */
+#note-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Organize into two rows */
+    gap: 12px; /* Spacing between buttons */
+    justify-content: center;
+    padding: 30px; /* General padding */
+    margin-top: 52px;
+    width: 100%;
+}
+
+.note-button {
+    background-color: white; /* Button background color */
+    color: black; /* Text color */
+    font-family: 'Verdana', sans-serif; /* Apply Macondo font explicitly */
+    border: none;
+    border-radius: 5px;
+    padding: 12px 15px; /* Adjust size for better spacing */
+    font-size: 18px; /* Increase font size */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+
+.note-button:hover {
+    background-color: #cccccc; /* Slightly darker on hover */
+}
+
+/* Slider */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px; /* Slim slider */
+    margin: 10px 0; /* Consistent spacing */
+    background: white; /* Slider background */
+    outline: none;
+    border-radius: 3px;
+    transition: background 0.3s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px; /* Thumb size */
+    height: 16px;
+    background: maroon; /* Thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px; /* Thumb size */
+    height: 16px;
+    background: maroon; /* Thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Frequency Display */
+#current-frequency {
+    color: white; /* Ensure white color */
+    font-family: 'Verdana', sans-serif; /* Apply Macondo font */
+    font-size: 16px; /* Adjust font size */
+    text-align: center;
+}
