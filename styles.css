@@ -1,5 +1,6 @@
+/* Base Styles */
 body {
-    font-family: 'Macondo', 'Trebuchet MS', sans-serif; /* Use Macondo font */
+    font-family: 'Macondo', 'Trebuchet MS', sans-serif;
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
@@ -11,47 +12,48 @@ body {
 #byzantine-plugin {
     position: relative;
     border: 0px solid #ccc;
-    width: 450px; /* Plugin width */
-    height: 800px; /* Plugin height */
+    width: 90%; /* Relative width for responsiveness */
+    max-width: 450px; /* Limit maximum width */
+    height: 80vh; /* Relative height */
+    max-height: 800px; /* Limit maximum height */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    background: url('uxbackground.png') no-repeat center; /* Center background image */
-    background-size: 100%; /* Scale down background image to 100% */
+    background: url('uxbackground.png') no-repeat center;
+    background-size: cover; /* Ensure background adapts */
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center elements vertically */
-    align-items: center; /* Center elements horizontally */
-    padding: 10px; /* General padding */
-    gap: 20px; /* Spacing between elements */
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 2rem; /* Use rem for spacing */
 }
 
 /* Note Buttons */
 #note-buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Organize into two rows */
-    gap: 12px; /* Spacing between buttons */
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Adapt grid to available space */
+    gap: 1rem; /* Use rem for spacing */
     justify-content: center;
-    padding: 30px; /* General padding */
-    margin-top: 52px;
+    padding: 2rem;
     width: 100%;
 }
 
 .note-button {
-    background-color: white; /* Button background color */
-    color: black; /* Text color */
-    font-family: 'Verdana', sans-serif; /* Apply Macondo font explicitly */
+    background-color: white;
+    color: black;
+    font-family: 'Verdana', sans-serif;
     border: none;
     border-radius: 5px;
-    padding: 12px 15px; /* Adjust size for better spacing */
-    font-size: 18px; /* Increase font size */
+    padding: 0.75rem 1rem; /* Use rem for padding */
+    font-size: 1rem; /* Responsive font size */
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     text-align: center;
 }
 
 .note-button:hover {
-    background-color: #cccccc; /* Slightly darker on hover */
+    background-color: #cccccc;
 }
 
 /* Slider */
@@ -59,29 +61,21 @@ input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 6px; /* Slim slider */
-    margin: 10px 0; /* Consistent spacing */
-    background: white; /* Slider background */
+    height: 0.375rem; /* Slim slider */
+    margin: 0.5rem 0;
+    background: white;
     outline: none;
     border-radius: 3px;
     transition: background 0.3s;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 16px; /* Thumb size */
-    height: 16px;
-    background: maroon; /* Thumb color */
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-input[type="range"]::-moz-range-thumb {
-    width: 16px; /* Thumb size */
-    height: 16px;
-    background: maroon; /* Thumb color */
+    width: 1rem;
+    height: 1rem;
+    background: maroon;
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s;
@@ -89,8 +83,42 @@ input[type="range"]::-moz-range-thumb {
 
 /* Frequency Display */
 #current-frequency {
-    color: white; /* Ensure white color */
-    font-family: 'Verdana', sans-serif; /* Apply Macondo font */
-    font-size: 16px; /* Adjust font size */
+    color: white;
+    font-family: 'Verdana', sans-serif;
+    font-size: 1rem; /* Responsive font size */
     text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #byzantine-plugin {
+        height: 90vh;
+        padding: 1rem;
+    }
+
+    .note-button {
+        font-size: 0.875rem; /* Slightly smaller font on smaller screens */
+    }
+
+    #note-buttons {
+        gap: 0.5rem;
+    }
+
+    input[type="range"] {
+        height: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #byzantine-plugin {
+        gap: 1rem;
+    }
+
+    .note-button {
+        padding: 0.5rem 0.75rem;
+    }
+
+    #current-frequency {
+        font-size: 0.875rem;
+    }
 }
