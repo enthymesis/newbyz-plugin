@@ -13,6 +13,7 @@ body {
     border: 0px solid #ccc;
     width: 450px; /* Plugin width */
     height: 800px; /* Plugin height */
+    aspect-ratio: 450 / 800; /* Lock aspect ratio */
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     background: url('uxbackground.png') no-repeat center; /* Center background image */
@@ -25,23 +26,22 @@ body {
     padding: 10px; /* General padding */
     gap: 20px; /* Spacing between elements */
     box-sizing: border-box; /* Include padding in dimensions */
-    transform-origin: top left; /* Set scaling origin for responsiveness */
 }
 
 /* Responsive Scaling */
 @media (max-width: 768px) {
     #byzantine-plugin {
-        width: 90%; /* Scale width to 90% of the screen */
+        width: 90vw; /* Scale to 90% of viewport width */
         height: auto; /* Maintain aspect ratio */
-        transform: scale(0.9); /* Scale down to fit smaller screens */
+        max-height: 100vh; /* Ensure it doesn't overflow the viewport height */
     }
 }
 
 @media (max-width: 480px) {
     #byzantine-plugin {
-        width: 100%; /* Take full width on smaller screens */
+        width: 100vw; /* Scale to full viewport width */
         height: auto; /* Maintain aspect ratio */
-        transform: scale(0.8); /* Scale down further for smaller screens */
+        max-height: 100vh; /* Ensure it doesn't overflow the viewport height */
     }
 }
 
@@ -51,7 +51,7 @@ body {
     grid-template-columns: repeat(4, 1fr); /* Organize into two rows */
     gap: 12px; /* Spacing between buttons */
     justify-content: center;
-    padding: 10px; /* General padding */
+    padding: 30px; /* General padding */
     margin-top: 52px;
     width: 100%;
 }
