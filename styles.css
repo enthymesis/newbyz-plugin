@@ -24,9 +24,11 @@ body {
     overflow: hidden; /* Prevent content overflow */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Start content from the bottom */
+    justify-content: flex-start; /* Align elements relative to top */
     align-items: center;
-    gap: 2rem; /* Spacing between elements */
+    padding-top: 9.75%; /* Start at x=9.75% of height */
+    padding-bottom: calc(100% - 20.61%); /* End at x=20.61% of height */
+    gap: 1rem; /* Spacing between elements */
     touch-action: manipulation; /* Enable touch interactions */
 }
 
@@ -36,37 +38,19 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Responsive grid */
     gap: 1rem; /* Spacing between buttons */
     justify-content: center; /* Center buttons horizontally */
-    align-items: center; /* Center buttons vertically in container */
+    align-items: center; /* Center buttons vertically */
     width: 90%; /* Buttons area adapts to screen size */
     max-width: 400px; /* Limit maximum width */
-    padding: 2rem 0; /* Add padding to move buttons down */
-    margin-bottom: 3rem; /* Place buttons lower on the screen */
-}
-
-.note-button {
-    background-color: white;
-    color: black;
-    font-family: 'Verdana', sans-serif;
-    border: none;
-    border-radius: 5px;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    text-align: center;
-}
-
-.note-button:hover {
-    background-color: #cccccc;
+    margin: 0 auto; /* Center the grid */
 }
 
 /* Slider */
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 100%;
+    width: 90%; /* Keep slider responsive */
     height: 0.375rem;
-    margin: 0.5rem 0;
+    margin: 0.5rem auto; /* Center slider */
     background: white;
     outline: none;
     border-radius: 3px;
@@ -96,7 +80,8 @@ input[type="range"]::-moz-range-thumb {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     #byzantine-plugin {
-        height: auto; /* Allow resizing */
+        padding-top: 12%; /* Adjust padding for smaller screens */
+        padding-bottom: 15%; /* Adjust end position for smaller screens */
     }
 
     #note-buttons {
@@ -110,7 +95,8 @@ input[type="range"]::-moz-range-thumb {
 
 @media (max-width: 480px) {
     #byzantine-plugin {
-        height: auto; /* Allow resizing */
+        padding-top: 14%; /* Further adjust for very small screens */
+        padding-bottom: 18%;
     }
 
     #current-frequency {
