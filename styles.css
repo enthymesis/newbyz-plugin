@@ -1,127 +1,96 @@
-/* Base Styles */
 body {
-    font-family: 'Macondo', 'Trebuchet MS', sans-serif;
+    font-family: 'Macondo', 'Trebuchet MS', sans-serif; /* Use Macondo font */
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    padding: 0; /* Remove any body padding */
-    overflow: hidden; /* Prevent unnecessary scrolling */
 }
 
 #byzantine-plugin {
-    position: absolute; /* Allow full-screen positioning */
-    top: 0;
-    left: 0;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    border: none; /* Remove borders */
-    border-radius: 0; /* Remove rounded corners */
-    background: url('uxbackground.png') no-repeat center center;
-    background-size: contain; /* Ensure the entire background is always visible */
-    overflow: hidden; /* Prevent content overflow */
+    position: relative;
+    border: 0px solid #ccc;
+    width: 450px; /* Plugin width */
+    height: 800px; /* Plugin height */
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background: url('uxbackground.png') no-repeat center; /* Center background image */
+    background-size: 100%; /* Scale down background image to 100% */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Align elements relative to top */
-    align-items: center;
-    touch-action: manipulation; /* Enable touch interactions */
-    transform-origin: top left; /* Scale from top-left corner */
-}
-
-#content-wrapper {
-    position: absolute;
-    top: 9.75%; /* Start relative to x=9.75% of the height */
-    height: calc(20.61% - 9.75%); /* Height proportional to the x=20.61% */
-    width: 90%; /* Ensure width is responsive within the plugin */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly; /* Distribute space evenly */
-    align-items: center;
+    justify-content: center; /* Center elements vertically */
+    align-items: center; /* Center elements horizontally */
+    padding: 10px; /* General padding */
+    gap: 20px; /* Spacing between elements */
 }
 
 /* Note Buttons */
 #note-buttons {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); /* Responsive grid */
-    gap: 1rem; /* Spacing between buttons */
-    justify-content: center; /* Center buttons horizontally */
-    align-items: center; /* Center buttons vertically */
-    width: 80%; /* Scale buttons area with plugin */
+    grid-template-columns: repeat(4, 1fr); /* Organize into two rows */
+    gap: 12px; /* Spacing between buttons */
+    justify-content: center;
+    padding: 30px; /* General padding */
+    margin-top: 52px;
+    width: 100%;
 }
 
 .note-button {
-    background-color: white;
-    color: black;
-    font-family: 'Verdana', sans-serif;
+    background-color: white; /* Button background color */
+    color: black; /* Text color */
+    font-family: 'Verdana', sans-serif; /* Apply Macondo font explicitly */
     border: none;
     border-radius: 5px;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
+    padding: 12px 15px; /* Adjust size for better spacing */
+    font-size: 18px; /* Increase font size */
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     text-align: center;
-    transform: scale(var(--scale-factor)); /* Scale with plugin */
 }
 
 .note-button:hover {
-    background-color: #cccccc;
+    background-color: #cccccc; /* Slightly darker on hover */
 }
 
 /* Slider */
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 100%; /* Scale with plugin width */
-    height: 0.375rem;
-    background: white;
+    width: 100%;
+    height: 6px; /* Slim slider */
+    margin: 10px 0; /* Consistent spacing */
+    background: white; /* Slider background */
     outline: none;
     border-radius: 3px;
     transition: background 0.3s;
-    transform: scale(var(--scale-factor)); /* Scale with plugin */
 }
 
-input[type="range"]::-webkit-slider-thumb,
-input[type="range"]::-moz-range-thumb {
+input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 1rem;
-    height: 1rem;
-    background: maroon;
+    width: 16px; /* Thumb size */
+    height: 16px;
+    background: maroon; /* Thumb color */
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s;
-    transform: scale(var(--scale-factor)); /* Scale thumb with plugin */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px; /* Thumb size */
+    height: 16px;
+    background: maroon; /* Thumb color */
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 /* Frequency Display */
 #current-frequency {
-    color: white;
-    font-family: 'Verdana', sans-serif;
-    font-size: 1rem;
+    color: white; /* Ensure white color */
+    font-family: 'Verdana', sans-serif; /* Apply Macondo font */
+    font-size: 16px; /* Adjust font size */
     text-align: center;
-    transform: scale(var(--scale-factor)); /* Scale with plugin */
 }
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    #byzantine-plugin {
-        height: auto;
-    }
-
-    #note-buttons {
-        gap: 0.5rem;
-    }
-
-    .note-button {
-        font-size: 0.875rem;
-    }
-}
-
-@media (max-width: 480px) {
-    #byzantine-plugin {
-        height: auto;
-    }
-
-    #current-frequency {
