@@ -26,10 +26,19 @@ body {
     flex-direction: column;
     justify-content: flex-start; /* Align elements relative to top */
     align-items: center;
-    padding-top: 9.75%; /* Start at x=9.75% of height */
-    padding-bottom: calc(100% - 20.61%); /* End at x=20.61% of height */
-    gap: 1rem; /* Spacing between elements */
     touch-action: manipulation; /* Enable touch interactions */
+    transform-origin: top left; /* Scale from top-left corner */
+}
+
+#content-wrapper {
+    position: absolute;
+    top: 9.75%; /* Start relative to x=9.75% of the height */
+    height: calc(20.61% - 9.75%); /* Height proportional to the x=20.61% */
+    width: 90%; /* Ensure width is responsive within the plugin */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* Distribute space evenly */
+    align-items: center;
 }
 
 /* Note Buttons */
@@ -39,22 +48,38 @@ body {
     gap: 1rem; /* Spacing between buttons */
     justify-content: center; /* Center buttons horizontally */
     align-items: center; /* Center buttons vertically */
-    width: 90%; /* Buttons area adapts to screen size */
-    max-width: 400px; /* Limit maximum width */
-    margin: 0 auto; /* Center the grid */
+    width: 80%; /* Scale buttons area with plugin */
+}
+
+.note-button {
+    background-color: white;
+    color: black;
+    font-family: 'Verdana', sans-serif;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+    transform: scale(var(--scale-factor)); /* Scale with plugin */
+}
+
+.note-button:hover {
+    background-color: #cccccc;
 }
 
 /* Slider */
 input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 90%; /* Keep slider responsive */
+    width: 100%; /* Scale with plugin width */
     height: 0.375rem;
-    margin: 0.5rem auto; /* Center slider */
     background: white;
     outline: none;
     border-radius: 3px;
     transition: background 0.3s;
+    transform: scale(var(--scale-factor)); /* Scale with plugin */
 }
 
 input[type="range"]::-webkit-slider-thumb,
@@ -67,6 +92,7 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s;
+    transform: scale(var(--scale-factor)); /* Scale thumb with plugin */
 }
 
 /* Frequency Display */
@@ -75,13 +101,13 @@ input[type="range"]::-moz-range-thumb {
     font-family: 'Verdana', sans-serif;
     font-size: 1rem;
     text-align: center;
+    transform: scale(var(--scale-factor)); /* Scale with plugin */
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     #byzantine-plugin {
-        padding-top: 12%; /* Adjust padding for smaller screens */
-        padding-bottom: 15%; /* Adjust end position for smaller screens */
+        height: auto;
     }
 
     #note-buttons {
@@ -95,11 +121,7 @@ input[type="range"]::-moz-range-thumb {
 
 @media (max-width: 480px) {
     #byzantine-plugin {
-        padding-top: 14%; /* Further adjust for very small screens */
-        padding-bottom: 18%;
+        height: auto;
     }
 
     #current-frequency {
-        font-size: 0.875rem;
-    }
-}
