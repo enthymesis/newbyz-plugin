@@ -51,7 +51,7 @@ body {
     grid-template-columns: repeat(4, 1fr); /* Organize into two rows */
     gap: 12px; /* Spacing between buttons */
     justify-content: center;
-    padding: 20px; /* General padding */
+    padding: 10px; /* General padding */
     margin-top: 52px;
     width: 100%;
 }
