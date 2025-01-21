@@ -17,7 +17,7 @@ body {
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     background: url('uxbackground.png') no-repeat center; /* Center background image */
-    background-size: 100%; /* Background image fits the container */
+    background-size: cover; /* Ensure the background covers the container */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -34,6 +34,7 @@ body {
         width: 90vw; /* Scale to 90% of viewport width */
         height: auto; /* Maintain aspect ratio */
         max-height: 100vh; /* Ensure it doesn't overflow the viewport height */
+        aspect-ratio: 9/16; /* Adjust aspect ratio for a more mobile-friendly size */
     }
 }
 
@@ -42,8 +43,10 @@ body {
         width: 100vw; /* Scale to full viewport width */
         height: auto; /* Maintain aspect ratio */
         max-height: 100vh; /* Ensure it doesn't overflow the viewport height */
+        aspect-ratio: 9/16; /* Adjust aspect ratio for mobile */
     }
 }
+
 
 /* Note Buttons */
 #note-buttons {
